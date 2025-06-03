@@ -1,0 +1,66 @@
+function getZodiacSign(day, month) {
+  const zodiacSigns = [
+    ["Capricorn", [12, 22], [1, 19], "?"],
+    ["Aquarius", [1, 20], [2, 18], "?"],
+    ["Pisces", [2, 19], [3, 20], "?"],
+    ["Aries", [3, 21], [4, 19], "?"],
+    ["Taurus", [4, 20], [5, 20], "?"],
+    ["Gemini", [5, 21], [6, 20], "?"],
+    ["Cancer", [6, 21], [7, 22], "?"],
+    ["Leo", [7, 23], [8, 22], "?"],
+    ["Virgo", [8, 23], [9, 22], "?"],
+    ["Libra", [9, 23], [10, 22], "?"],
+    ["Scorpio", [10, 23], [11, 21], "?"],
+    ["Sagittarius", [11, 22], [12, 21], "?"],
+  ];
+
+  for (const [sign, [startMonth, startDay], [endMonth, endDay], symbol] of zodiacSigns) {
+    if ((month === startMonth && day >= startDay) || (month === endMonth && day <= endDay)) {
+      return { sign, symbol };
+    }
+  }
+  return { sign: "Unknown", symbol: "" };
+}
+
+function getZodiacTraits(sign) {
+  const traits = {
+    "Capricorn": "Ambisius, disiplin, dan bertanggung jawab.",
+    "Aquarius": "Inovatif, mandiri, dan humanis.",
+    "Pisces": "Empatik, kreatif, dan intuitif.",
+    "Aries": "Berani, penuh energi, dan impulsif.",
+    "Taurus": "Stabil, sabar, dan materialistis.",
+    "Gemini": "Komunikatif, cerdas, dan mudah beradaptasi.",
+    "Cancer": "Emosional, setia, dan protektif.",
+    "Leo": "Karismatik, percaya diri, dan suka memimpin.",
+    "Virgo": "Analitis, teliti, dan perfeksionis.",
+    "Libra": "Diplomatis, adil, dan menyukai keharmonisan.",
+    "Scorpio": "Intens, misterius, dan berkemauan kuat.",
+    "Sagittarius": "Optimis, jujur, dan petualang.",
+  };
+  return traits[sign] || "Sifat tidak ditemukan.";
+}
+
+function checkZodiac() {
+  const day = parseInt(document.getElementById("day").value);
+  const month = parseInt(document.getElementById("month").value);
+  const result = document.getElementById("result");
+
+  if (isNaN(day) || isNaN(month)) {
+    result.innerHTML = "?? Silakan pilih tanggal dan bulan!";
+    return;
+  }
+
+  const { sign, symbol } = getZodiacSign(day, month);
+  const traits = getZodiacTraits(sign);
+
+  if (sign === "Unknown") {
+    result.innerHTML = "?? Tanggal tidak valid.";
+  } else {
+    result.innerHTML = `
+      <div>
+        <h2>${symbol} ${sign}</h2>
+        <p>${traits}</p>
+        <img class="zodiac-icon" src="https://raw.githubusercontent.com/ErikasG/zodiac-icons/main/icons/${sign.toLowerCase()}.svg" alt="${sign}" />
+      </div>`;
+  }
+}
