@@ -1,1 +1,1 @@
-# guess-the-zodiac-nymy
+# Guess-the-zodiac-nymy
