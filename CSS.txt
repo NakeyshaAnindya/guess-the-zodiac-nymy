@@ -1,0 +1,44 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 50px;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
+  margin: auto;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+input, button {
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #6c5ce7;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #a29bfe;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+}
